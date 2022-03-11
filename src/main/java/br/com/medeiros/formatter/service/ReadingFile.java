@@ -12,8 +12,8 @@ import java.util.Set;
 @Service
 public class ReadingFile {
 
-    public static Set<String> readingTheLines(){
-        String filePath = "./src/fileData.txt";
+    public Set<String> readingTheLines(String path){
+        String filePath = path;
         String line = null;
         Set<String> lineList = new HashSet<String>();
         try {
