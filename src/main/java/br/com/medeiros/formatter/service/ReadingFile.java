@@ -12,8 +12,8 @@ import java.util.Set;
 @Service
 public class ReadingFile {
 
-    public Set<String> readingTheLines(){
-        String filePath = ".src/main/resource/fileData.txt";
+    public static Set<String> readingTheLines(){
+        String filePath = "./src/fileData.txt";
         String line = null;
         Set<String> lineList = new HashSet<String>();
         try {
@@ -29,5 +29,4 @@ public class ReadingFile {
         }
         return lineList;
     }
-
 }
