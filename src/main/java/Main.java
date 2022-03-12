@@ -13,10 +13,13 @@ public class Main {
 
 
     public static void main(String[] args) {
-
-        ReadingFile readingFile = new ReadingFile();
-        var linesFile= readingFile.readingFile("./src/fileData.txt");
-        linesFile.forEach(line -> System.out.println(line));
+        if(args != null && args.length > 0){
+            ReadingFile readingFile = new ReadingFile();
+            String path = args[0];
+            var linesFile= readingFile.readingFile(path);
+            linesFile.forEach(line -> System.out.println(line));
+        }else
+            System.out.println("There is no file path...");
     }
 
 

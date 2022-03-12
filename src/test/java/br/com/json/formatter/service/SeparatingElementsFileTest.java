@@ -4,8 +4,6 @@ package br.com.json.formatter.service;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashSet;
-
 public class SeparatingElementsFileTest {
 
     @Test

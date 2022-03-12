@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class ReadingFile {
 
-    public static Set<String> readingFile(String path) {
+    public Set<String> readingFile(String path) {
         String filePath = path;
         String line = null;
         Set<String> lineList = new HashSet<String>();

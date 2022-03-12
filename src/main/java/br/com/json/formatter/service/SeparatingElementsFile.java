@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class SeparatingElementsFile {
 
-    public static Map<String, String> separatingElements(String listaElements){
+    public Map<String, String> separatingElements(String listaElements){
         Map<String, String> mapElements = new HashMap<>();
         mapElements.put("user_id", listaElements.substring(0,10));
         mapElements.put("user_name", listaElements.substring(11, 55).trim());
