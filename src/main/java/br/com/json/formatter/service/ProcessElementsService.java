@@ -2,18 +2,19 @@ package br.com.json.formatter.service;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class ProcessElementsFile {
+public class ProcessElementsService {
 
-    public Map<String, Object> processingElements(Map<String, String> elementsMap){
+    public Map<String, Object> processingElements(List<String> elementsMap){
         Map<String, Object> mapElements = new HashMap<>();
-        mapElements.put("user_id", transformeStringToInt(elementsMap.get("user_id")));
-        mapElements.put("user_name", elementsMap.get("user_name"));
-        mapElements.put("order_id", transformeStringToInt(elementsMap.get("order_id")));
-        mapElements.put("product_id", transformeStringToInt(elementsMap.get("product_id")));
-        mapElements.put("product_value", transformeStringToDouble(elementsMap.get("product_value")));
-        mapElements.put("order_date", transformeStringToDate(elementsMap.get("order_date")));
+        mapElements.put("user_id", transformeStringToInt(elementsMap.get(0)));
+        mapElements.put("user_name", elementsMap.get(1));
+        mapElements.put("order_id", transformeStringToInt(elementsMap.get(2)));
+        mapElements.put("product_id", transformeStringToInt(elementsMap.get(3)));
+        mapElements.put("product_value", transformeStringToDouble(elementsMap.get(4)));
+        mapElements.put("order_date", transformeStringToDate(elementsMap.get(5)));
         return mapElements;
     }
 

@@ -22,6 +22,6 @@ public class User {
 
     public void addingOrdersInlist(Order newOrder){
         if(orders == null) orders = new ArrayList<>();
-        this.orders.add(newOrder);
+        if(!this.orders.contains(newOrder)) this.orders.add(newOrder);
     }
 }

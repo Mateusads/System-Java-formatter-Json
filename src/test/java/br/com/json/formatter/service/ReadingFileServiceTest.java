@@ -3,11 +3,11 @@ package br.com.json.formatter.service;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ReadingFileTest {
+public class ReadingFileServiceTest {
 
     @Test
     public void readFileReturnLine(){ ;
-        ReadingFile readFile = new ReadingFile();
+        ReadingFileService readFile = new ReadingFileService();
         var linesFile= readFile.readingFile("./src/fileDataTest.txt");
 
         Assert.assertEquals("[0000000075                                  Bobbie Batz00000007980000000002     1578.5720211116, " +
