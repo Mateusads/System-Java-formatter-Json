@@ -26,18 +26,16 @@ public class ResponseToJson {
         Set<User> users = new HashSet<>();
         Set<Order> orders = new HashSet<>();
         Set<Product> products = new HashSet<>();
+        CreateUserService userCreate = new CreateUserService();
+        CreateOrderService orderCreate = new CreateOrderService();
+        CreateProductService productCreate = new CreateProductService();
+        ProcessElementsService elementProcessor = new ProcessElementsService();
         SeparatingTypeElementsService separating = new SeparatingTypeElementsService();
         for(var lineFile : fileComplete){
-            var elementsFileSeparedForColum = separating.separatingElements(lineFile);
-            ProcessElementsService elementProcessor = new ProcessElementsService();
-            var processedElement = elementProcessor.processingElements(elementsFileSeparedForColum);
-            //CreateEntity entityCreate = new CreateEntity();
-            CreateUserService userCreate = new CreateUserService();
-            CreateOrderService orderCreate = new CreateOrderService();
-            CreateProductService productCreate = new CreateProductService();
-            var createdUser = userCreate.createUser((int)processedElement.get("user_id"), (String)processedElement.get("user_name"), users);
-            var createdOrder = orderCreate.createOrder((int)processedElement.get("order_id"), (LocalDate) processedElement.get("order_date"), orders);
-            var createdProduct = productCreate.createProduct((int)processedElement.get("product_id"), (Double) processedElement.get("product_value"), products);
+            var elements = separating.separatingElements(lineFile);
+            var createdUser = userCreate.createUser(elementProcessor.transformeStringToInt(elements.get(0)), elements.get(1), users);
+            var createdOrder = orderCreate.createOrder(elementProcessor.transformeStringToInt(elements.get(2)), elementProcessor.transformeStringToDate(elements.get(5)), orders);
+            var createdProduct = productCreate.createProduct(elementProcessor.transformeStringToInt(elements.get(3)), elementProcessor.transformeStringToDouble(elements.get(4)), products);
             users.add(createdUser);
             orders.add(createdOrder);
             products.add(createdProduct);
