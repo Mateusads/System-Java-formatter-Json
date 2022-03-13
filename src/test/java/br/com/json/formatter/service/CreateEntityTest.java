@@ -15,9 +15,9 @@ public class CreateEntityTest{
         SeparatingElementsFile separating = new SeparatingElementsFile();
         ProcessElementsFile process = new ProcessElementsFile();
         var listElements = (separating.separatingElements("0000000071                               Everett Beahan00000007590000000002      337.2120210808"));
-        process.processingElements(listElements);
+        var listObjectElements = process.processingElements(listElements);
         CreateEntity newEntity = new CreateEntity();
-        var entitysReturn = newEntity.createEntity(listElements);
+        var entitysReturn = newEntity.createEntity(listObjectElements);
         var newUser = (User) entitysReturn.get("user");
         var newOrder = (Order) entitysReturn.get("order");
         var newProduct = (Product) entitysReturn.get("product");

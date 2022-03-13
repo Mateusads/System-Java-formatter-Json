@@ -10,12 +10,11 @@ import java.util.Map;
 
 public class CreateEntity {
 
-    public Map<String, Object> createEntity(Map<String, String> listElements){
-        String dateOrder = listElements.get("order_date");
-        LocalDate orderDate = LocalDate.of(Integer.parseInt(dateOrder.substring(0,4)), Integer.parseInt(dateOrder.substring(4,6)), Integer.parseInt(dateOrder.substring(6,8)));
-        User newUser = createUser(Integer.parseInt(listElements.get("user_id")), listElements.get("user_name"));
-        Order newOrder = createOrder(Integer.parseInt(listElements.get("order_id")), orderDate, newUser);
-        Product newProduct = createProduct(Integer.parseInt(listElements.get("product_id")), Double.parseDouble(listElements.get("product_value")), newOrder);
+    public Map<String, Object> createEntity(Map<String, Object> elementsMap){
+        var newUser = createUser((int) elementsMap.get("user_id"), (String) elementsMap.get("user_name"));
+        var newOrder = createOrder((int) elementsMap.get("order_id"), (LocalDate) elementsMap.get("order_date"), newUser);
+        var newProduct = createProduct((int) elementsMap.get("product_id"), (double) elementsMap.get("product_value"), newOrder);
+
         Map<String, Object> entitysMap = new HashMap<>();
         entitysMap.put("user", newUser);
         entitysMap.put("order", newOrder);
