@@ -31,4 +31,24 @@ public class CreateEntityTest{
 
     }
 
+    @Test
+    public void testUserData(){
+        SeparatingElementsFile separating = new SeparatingElementsFile();
+        ProcessElementsFile process = new ProcessElementsFile();
+        var listElements = (separating.separatingElements("0000000071                               Everett Beahan00000007590000000002      337.2120210808"));
+        var listObjectElements = process.processingElements(listElements);
+        CreateEntity newEntity = new CreateEntity();
+        var entitysReturn = newEntity.createEntity(listObjectElements);
+        var newUser = (User) entitysReturn.get("user");
+
+        Assert.assertEquals(71, newUser.getId());
+        Assert.assertEquals("Everett Beahan", newUser.getName());
+        Assert.assertEquals(759, newUser.getOrders().get(0).getId());
+        Assert.assertEquals(337.21, newUser.getOrders().get(0).getTotal(), DELTA);
+        Assert.assertEquals("2021-08-08", newUser.getOrders().get(0).getDate().toString());
+        Assert.assertEquals(2, newUser.getOrders().get(0).getProducts().get(0).getId());
+        Assert.assertEquals(337.21, newUser.getOrders().get(0).getProducts().get(0).getValue(), DELTA);
+
+    }
+
 }

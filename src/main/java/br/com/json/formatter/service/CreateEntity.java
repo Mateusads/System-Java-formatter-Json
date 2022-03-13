@@ -11,9 +11,12 @@ import java.util.Map;
 public class CreateEntity {
 
     public Map<String, Object> createEntity(Map<String, Object> elementsMap){
+        var newOrder = createOrder((int) elementsMap.get("order_id"), (LocalDate) elementsMap.get("order_date"));
         var newUser = createUser((int) elementsMap.get("user_id"), (String) elementsMap.get("user_name"));
-        var newOrder = createOrder((int) elementsMap.get("order_id"), (LocalDate) elementsMap.get("order_date"), newUser);
-        var newProduct = createProduct((int) elementsMap.get("product_id"), (double) elementsMap.get("product_value"), newOrder);
+        var newProduct = createProduct((int) elementsMap.get("product_id"), (double) elementsMap.get("product_value"));
+        newUser.addingOrdersInlist(newOrder);
+        newOrder.addingProductsInlist(newProduct);
+        newOrder.addingValueInTotal(newProduct.getValue());
 
         Map<String, Object> entitysMap = new HashMap<>();
         entitysMap.put("user", newUser);
@@ -30,20 +33,18 @@ public class CreateEntity {
         return createdUser;
     }
 
-    private Order createOrder(int id, LocalDate date, User user){
+    private Order createOrder(int id, LocalDate date){
         Order createdOrder = Order.builder()
                 .id(id)
                 .date(date)
-                .user(user)
                 .build();
         return createdOrder;
     }
 
-    private Product createProduct(int id, double value, Order order){
+    private Product createProduct(int id, double value){
         Product createdProduct = Product.builder()
                 .id(id)
                 .value(value)
-                .order(order)
                 .build();
         return createdProduct;
     }
