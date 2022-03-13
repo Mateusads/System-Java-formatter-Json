@@ -1,6 +1,8 @@
 package br.com.json.formatter.service;
 
-import java.time.LocalDate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ProcessElementsService {
 
@@ -17,11 +19,15 @@ public class ProcessElementsService {
         return transformedInt;
     }
 
-    public LocalDate transformeStringToDate(String textDate) {
-        LocalDate transformedDate = LocalDate.of(Integer.parseInt(textDate.substring(0,4)),
-                Integer.parseInt(textDate.substring(4,6)),
-                Integer.parseInt(textDate.substring(6,8)));
-        return transformedDate;
+    public Date transformeStringToDate(String textDate) {
+        Date dataFormatada = new Date();
+        try{
+            SimpleDateFormat formato = new SimpleDateFormat("yyyyMMdd");
+            dataFormatada = formato.parse(textDate);
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dataFormatada;
     }
 
     public Double transformeStringToDouble(String textDouble) {

@@ -2,12 +2,12 @@ package br.com.json.formatter.service;
 
 import br.com.json.formatter.model.Order;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 public class CreateOrderService {
 
-    public Order createOrder(int id, LocalDate date, Set<Order> orders) {
+    public Order createOrder(int id, Date date, Set<Order> orders) {
         var newOrder = existingOrder(id, orders);
         if (newOrder == null) newOrder = createNewOrder(id, date);
         return newOrder;
@@ -22,7 +22,7 @@ public class CreateOrderService {
         return null;
     }
 
-    private Order createNewOrder(int id, LocalDate date) {
+    private Order createNewOrder(int id, Date date) {
         return Order.builder()
                 .id(id)
                 .date(date)

@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -15,7 +15,7 @@ public class Order {
 
     private int id;
     private double total;
-    private LocalDate date;
+    private Date date;
     private List<Product> products;
 
     public void addingProductsInlist(Product newProduct){
