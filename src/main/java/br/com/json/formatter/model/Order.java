@@ -22,6 +22,7 @@ public class Order {
     public void addingProductsInlist(Product newProduct){
         if(products == null) products = new ArrayList<>();
         this.products.add(newProduct);
+        addingValueInTotal(newProduct.getValue());
     }
 
     public void addingValueInTotal(Double value){

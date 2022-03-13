@@ -7,16 +7,16 @@ import br.com.json.formatter.model.User;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class CreateEntity {
 
-    public Map<String, Object> createEntity(Map<String, Object> elementsMap){
-        var newOrder = createOrder((int) elementsMap.get("order_id"), (LocalDate) elementsMap.get("order_date"));
-        var newUser = createUser((int) elementsMap.get("user_id"), (String) elementsMap.get("user_name"));
-        var newProduct = createProduct((int) elementsMap.get("product_id"), (double) elementsMap.get("product_value"));
+    public Map<String, Object> createEntity(Map<String, Object> elementsMap, Set<User> users, Set<Order> orders, Set<Product> products){
+        var newUser = createUser((int) elementsMap.get("user_id"), (String) elementsMap.get("user_name"), users);
+        var newOrder = createOrder((int) elementsMap.get("order_id"), (LocalDate) elementsMap.get("order_date"), orders);
+        var newProduct = createProduct((int) elementsMap.get("product_id"), (double) elementsMap.get("product_value"), products);
         newUser.addingOrdersInlist(newOrder);
         newOrder.addingProductsInlist(newProduct);
-        newOrder.addingValueInTotal(newProduct.getValue());
 
         Map<String, Object> entitysMap = new HashMap<>();
         entitysMap.put("user", newUser);
@@ -25,15 +25,25 @@ public class CreateEntity {
         return entitysMap;
     }
 
-    private User createUser(int id, String name){
-        User createdUser = User.builder()
-                .id(id)
-                .name(name)
-                .build();
+    private User createUser(int id, String name, Set<User> users){
+        for(var user : users){
+            if(user.getId() == id){
+                return user;
+            }
+        }
+        var createdUser = User.builder()
+                    .id(id)
+                    .name(name)
+                    .build();
         return createdUser;
     }
 
-    private Order createOrder(int id, LocalDate date){
+    private Order createOrder(int id, LocalDate date, Set<Order> orders){
+        for(var order : orders){
+            if(order.getId() == id){
+                return order;
+            }
+        }
         Order createdOrder = Order.builder()
                 .id(id)
                 .date(date)
@@ -41,7 +51,8 @@ public class CreateEntity {
         return createdOrder;
     }
 
-    private Product createProduct(int id, double value){
+    private Product createProduct(int id, double value, Set<Product> products){
+
         Product createdProduct = Product.builder()
                 .id(id)
                 .value(value)
