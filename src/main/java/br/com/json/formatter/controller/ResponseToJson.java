@@ -6,6 +6,7 @@ import br.com.json.formatter.model.User;
 import br.com.json.formatter.service.*;
 import com.google.gson.Gson;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,12 +15,12 @@ public class ResponseToJson {
 
     public String responseJson(List<String> linesFile){
         Gson userJson = new Gson();
-        String userResponse = "";
+        StringBuilder userResponse = new StringBuilder();
         var usersCreated = createDataForJson(linesFile);
         for(var user : usersCreated){
-            userResponse = userJson.toJson(user, User.class);
+            userResponse.append(userJson.toJson(user, User.class));
         }
-        return userResponse;
+        return userResponse.toString();
     }
     private Set<User> createDataForJson(List<String> fileComplete){
         Set<User> users = new HashSet<>();
@@ -32,14 +33,16 @@ public class ResponseToJson {
             var processedElement = elementProcessor.processingElements(elementsFileSeparedForColum);
             //CreateEntity entityCreate = new CreateEntity();
             CreateUserService userCreate = new CreateUserService();
-            CreateOrderService userOrder = new CreateOrderService();
-            CreateProductService userProduct = new CreateProductService();
+            CreateOrderService orderCreate = new CreateOrderService();
+            CreateProductService productCreate = new CreateProductService();
             var createdUser = userCreate.createUser((int)processedElement.get("user_id"), (String)processedElement.get("user_name"), users);
+            var createdOrder = orderCreate.createOrder((int)processedElement.get("order_id"), (LocalDate) processedElement.get("order_date"), orders);
+            var createdProduct = productCreate.createProduct((int)processedElement.get("product_id"), (Double) processedElement.get("product_value"), products);
             users.add(createdUser);
-            //orders.add((Order) createdEntity.get("order"));
-            //products.add((Product) createdEntity.get("product"));
-            //newUser.addingOrdersInlist(newOrder);
-            //newOrder.addingProductsInlist(newProduct);
+            orders.add(createdOrder);
+            products.add(createdProduct);
+            createdUser.addingOrdersInlist(createdOrder);
+            createdOrder.addingProductsInlist(createdProduct);
         }
         return users;
     }

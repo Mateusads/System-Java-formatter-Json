@@ -24,7 +24,7 @@ public class Order {
         addingValueInTotal(newProduct.getValue());
     }
 
-    public void addingValueInTotal(Double value){
+    private void addingValueInTotal(Double value){
         total += value;
     }
 }

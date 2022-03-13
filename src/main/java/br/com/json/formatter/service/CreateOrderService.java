@@ -14,8 +14,10 @@ public class CreateOrderService {
     }
 
     private Order existingOrder(int id, Set<Order> orders) {
-        for (var order : orders) {
-            if (order.getId() == id) return order;
+        if(orders != null) {
+            for (var order : orders) {
+                if (order.getId() == id) return order;
+            }
         }
         return null;
     }
