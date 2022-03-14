@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class CreateObjects {
+public class CreateObjectsService {
 
     public Set<User> createObjectFromLines(List<String> lines){
         return create(lines);

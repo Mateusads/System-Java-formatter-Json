@@ -5,7 +5,6 @@ import br.com.json.formatter.service.ReadingFileService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.List;
 import java.util.Set;
 
 public class ResponseToJson {

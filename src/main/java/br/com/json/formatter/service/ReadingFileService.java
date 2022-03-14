@@ -16,7 +16,7 @@ public class ReadingFileService {
         String filePath = path;
         String line = null;
         List<String> lineList = new ArrayList<>();
-        CreateObjects createObjects = new CreateObjects();
+        CreateObjectsService createObjectsService = new CreateObjectsService();
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
             while ((line = br.readLine()) != null) {
@@ -28,6 +28,6 @@ public class ReadingFileService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return createObjects.createObjectFromLines(lineList);
+        return createObjectsService.createObjectFromLines(lineList);
     }
 }

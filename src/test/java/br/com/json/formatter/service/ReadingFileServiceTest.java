@@ -1,17 +1,25 @@
 package br.com.json.formatter.service;
 
-import org.junit.Assert;
+import br.com.json.formatter.model.User;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ReadingFileServiceTest {
 
     @Test
-    public void readFileReturnLine(){ ;
+    public void readFileReturnLine() {
+        List<User> listUser = new ArrayList<>();
         ReadingFileService readFile = new ReadingFileService();
-        var linesFile= readFile.readingFile("./src/fileDataTest.txt");
+        var linesFile = readFile.readingFile("./src/fileDataTest.txt");
+        linesFile.forEach(user -> listUser.add((User) user));
 
-        Assert.assertEquals("[0000000075                                  Bobbie Batz00000007980000000002     1578.5720211116, " +
-                "0000000049                               Ken Wintheiser00000005230000000003      586.7420210903]", linesFile.toString());
+        assertThat(71).isEqualTo(listUser.get(0).getId());
+        assertThat("Everett Beahan").isEqualTo(listUser.get(0).getName());
+        assertThat(57).isEqualTo(listUser.get(1).getId());
+        assertThat("Elidia Gulgowski IV").isEqualTo(listUser.get(1).getName());
     }
-
 }
