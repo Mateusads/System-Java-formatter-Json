@@ -10,14 +10,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class CreateUserServiceTest extends TestCase {
-    private static String LINE = "0000000071                               Everett Beahan00000007610000000004     1881.5420210702";
+    private static String LINE1 = "0000000071                               Everett Beahan00000007610000000004     1881.5420210702";
+    private static String LINE2 = "0000000071                               Everett Beahan00000007610000000004     1881.5420210702";
+    private static String LINE3 = "0000000057                          Elidia Gulgowski IV00000006200000000000     1417.2520210919";
+    private static String LINE4 = "0000000057                          Elidia Gulgowski IV00000006200000000000     100.02520210919";
 
     @Test
     public void testCreatingEntityUser(){
         ExtractDataService extractDataService = new ExtractDataService();
         CreateUserService createUserService = new CreateUserService();
-        var userName = extractDataService.extractName(LINE);
-        var userId = extractDataService.extractUserId(LINE);
+        var userName = extractDataService.extractName(LINE1);
+        var userId = extractDataService.extractUserId(LINE1);
         Set<User> users = new HashSet<>();
         var createdUser = createUserService.createUser(userId, userName, users);
 
@@ -33,10 +36,10 @@ public class CreateUserServiceTest extends TestCase {
         List<String> lines = new ArrayList<>();
         Set<User> users = new LinkedHashSet<>();
         List<User> userList = new ArrayList<>();
-        lines.add("0000000071                               Everett Beahan00000007610000000004     1881.5420210702");
-        lines.add("0000000071                               Everett Beahan00000007610000000004     1881.5420210702");
-        lines.add("0000000057                          Elidia Gulgowski IV00000006200000000000     1417.2520210919");
-        lines.add("0000000057                          Elidia Gulgowski IV00000006200000000004     100.02520210919");
+        lines.add(LINE1);
+        lines.add(LINE2);
+        lines.add(LINE3);
+        lines.add(LINE4);
         for(var line : lines){
             var createdUser = createUserService.createUser(extractDataService.extractUserId(line), extractDataService.extractName(line), users);
             users.add(createdUser);
