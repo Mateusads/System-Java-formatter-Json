@@ -2,20 +2,22 @@ package br.com.json.formatter.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
 @Getter
 @Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Order {
-
+    @EqualsAndHashCode.Include
     private int id;
     private double total;
-    private Date date;
+    private LocalDate date;
     private List<Product> products;
 
     public void addingProductsInlist(Product newProduct){

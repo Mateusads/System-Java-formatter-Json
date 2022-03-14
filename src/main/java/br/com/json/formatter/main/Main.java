@@ -9,8 +9,9 @@ public class Main {
         if(args != null && args.length > 0) {
             path = args[0];
         }
-        RequestFileConverter requestFile = new RequestFileConverter();
-        System.out.println(requestFile.readingFile(path));
+        RequestFileConverter requestFileConverter = new RequestFileConverter();
+        var jsonTheFile= requestFileConverter.readingFile(path);
+        System.out.println(jsonTheFile);
 
     }
 }
