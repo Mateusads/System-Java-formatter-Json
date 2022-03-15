@@ -14,7 +14,7 @@ public class ReadingFileServiceTest {
     public void readFileReturnLine() {
         List<User> listUser = new ArrayList<>();
         ReadingFileService readFile = new ReadingFileService();
-        var linesFile = readFile.readingFile("./src/fileDataTest.txt");
+        var linesFile = readFile.readingFile("./src/main/resources/fileDataTest.txt");
         linesFile.forEach(user -> listUser.add((User) user));
 
         assertThat(71).isEqualTo(listUser.get(0).getId());
