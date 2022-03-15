@@ -16,6 +16,6 @@ CI/CD
 Feito teste de Unidade com Junit para ao fazer o a Integração Continua onde ao rodar a pipeline no GitHub todos os testes devem passar para 
 que não tenha problema na integração.
 
-CD - Usando o Heroku como exemplo, usando o Github Actions feito um script yml para fazer o deploy para o servidor, antes rodando os testes e 
+CD - Usando o Github Actions feito um script yml para fazer o deploy para o servidor, antes rodando os testes e 
 tasks para garantir que tudo está correto.
 
