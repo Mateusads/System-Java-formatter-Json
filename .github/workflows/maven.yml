@@ -30,7 +30,7 @@ jobs:
 
     name: deploy-dev
     runs-on: ubuntu-latest
-    environment: production
+    environment: dev
     needs: [build]
     steps:
       - uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
 
     name: deploy-homolog
     runs-on: ubuntu-latest
-    environment: production
+    environment: homolog
     needs: deploy-dev
     steps:
       - uses: actions/checkout@v2
