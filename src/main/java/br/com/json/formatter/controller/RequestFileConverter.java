@@ -6,5 +6,4 @@ public class RequestFileConverter {
         ResponseToJson responseToJson = new ResponseToJson();
         return responseToJson.responseJson(path);
     }
-
 }

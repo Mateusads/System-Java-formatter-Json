@@ -11,13 +11,11 @@ public class Main {
             RequestFileConverter requestFileConverter = new RequestFileConverter();
             var jsonTheFile = requestFileConverter.readingFile(path);
             System.out.println(jsonTheFile);
+            System.out.println("200: Program finished");
         }catch (NullPointerException e ){
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("500: Error: " + e.getMessage());
         }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Path not found");
-            System.out.println("Error: " + e.getMessage());
-        }finally {
-            System.out.println("Program closed");
+            System.out.println("404: Path not found");
         }
     }
 }

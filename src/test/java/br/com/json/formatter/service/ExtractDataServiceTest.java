@@ -32,7 +32,4 @@ public class ExtractDataServiceTest{
         assertThat(5).isEqualTo(extractDataService.extractProductId(LINE2));
         assertThat(1001.50).isEqualTo(extractDataService.extractProductValue(LINE2));
     }
-
-
-
 }

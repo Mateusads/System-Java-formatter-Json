@@ -38,9 +38,5 @@ public class CreateObjectsServiceTest {
         assertThat("2021-09-19").isEqualTo(obcjectList.get(1).getOrders().get(0).getDate().toString());
         assertThat(0).isEqualTo(obcjectList.get(1).getOrders().get(0).getProducts().get(0).getId());
         assertThat(1417.25).isEqualTo(obcjectList.get(1).getOrders().get(0).getProducts().get(0).getValue());
-
-
-
     }
-
 }

@@ -15,6 +15,7 @@ public class ResponseToJson {
         ReadingFileService readingFileService = new ReadingFileService();
         return createDataForJson(readingFileService.readingFile(path));
     }
+
     private String createDataForJson(Set<User> usersCreated){
         Gson userJson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -24,8 +25,8 @@ public class ResponseToJson {
         userResponse.append(userJson.toJson(usersCreated));
         return userResponse.toString();
     }
-    private class LocalDateAdapter implements JsonSerializer<LocalDate> {
 
+    private class LocalDateAdapter implements JsonSerializer<LocalDate> {
         public JsonElement serialize(LocalDate date, Type typeOfSrc, JsonSerializationContext context) {
             return new JsonPrimitive(date.format(DateTimeFormatter.ISO_LOCAL_DATE)); // "yyyy-mm-dd"
         }

@@ -18,10 +18,6 @@ public class User {
     private String name;
     private List<Order> orders;
 
-    public User() {
-
-    }
-
     public void addingOrdersInlist(Order newOrder){
         if(orders == null) orders = new ArrayList<>();
         if(!this.orders.contains(newOrder)) this.orders.add(newOrder);

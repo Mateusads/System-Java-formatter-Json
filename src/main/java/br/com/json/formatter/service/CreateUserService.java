@@ -27,5 +27,4 @@ public class CreateUserService {
                 .name(name)
                 .build();
     }
-
 }
