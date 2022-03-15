@@ -45,22 +45,23 @@ jobs:
     steps:
     - name: test
       run: mvn package
-      
-  deploy-production:
 
-    name: deploy-production
+
+  deploy-production:
+  
     runs-on: ubuntu-latest
-    environment: dev
+    environment: production
     needs: deploy-homolog
     steps:
-    - name: test
-      run: mvn packag
-    -name: deploy:application
-    if: ${{ github.ref == 'refs/heads/main' }
-    uses: AkhileshNS/heroku-deploy@v3.12.12
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: "jsonformatterprogram"
-        heroku_email: "mateus-medeiross@hotmail.com" 
+      - uses: actions/checkout@v2
+      - name: test
+        run: mvn package
+      - name: deploy:application
+        if: ${{ github.ref == 'refs/heads/main' }}
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "jsonformatterprogram"
+          heroku_email: "mateus-medeiross@hotmail.com"  
 
-
+    
