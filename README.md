@@ -1,6 +1,5 @@
 # System-Java-formatter-Json
-Criacação de um sistema onde recebe dados tipo txt sem padrão e transforma em um Json
-
+Criacação de um sistema onde recebe arquivo.txt
 O programa foi desenvolvido para fim de teste.
 
 Recebe um args[] (parâmetro) que é o path do arquivo exemplo: ./src/main/resources/fileData.txt
