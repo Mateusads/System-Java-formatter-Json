@@ -18,8 +18,7 @@ public class CreateProductServiceTest{
     public void testCreatingEntityProduct(){
         CreateProductService createProductService = new CreateProductService();
         ExtractDataService extractDataService = new ExtractDataService();
-        Set<Product> products = new HashSet<>();
-        var createProducts = createProductService.createProduct(extractDataService.extractProductId(LINE1), extractDataService.extractProductValue(LINE1), products);
+        var createProducts = createProductService.createProduct(extractDataService.extractProductId(LINE1), extractDataService.extractProductValue(LINE1));
 
         assertThat(4).isEqualTo(createProducts.getId());
         assertThat(1881.54).isEqualTo(createProducts.getValue());
@@ -30,15 +29,13 @@ public class CreateProductServiceTest{
         CreateProductService createProductService = new CreateProductService();
         ExtractDataService extractDataService = new ExtractDataService();
         List<String> lines = new ArrayList<>();
-        Set<Product> products = new LinkedHashSet<>();
         List<Product> productList = new ArrayList<>();
         lines.add(LINE1);
         lines.add(LINE2);
         lines.add(LINE3);
         lines.add(LINE4);
         for(var line : lines){
-            var createdProduct = createProductService.createProduct(extractDataService.extractProductId(line), extractDataService.extractProductValue(line), products);
-            products.add(createdProduct);
+            var createdProduct = createProductService.createProduct(extractDataService.extractProductId(line), extractDataService.extractProductValue(line));
             productList.add(createdProduct);
         }
 

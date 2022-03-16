@@ -3,8 +3,8 @@ package br.com.json.formatter.service;
 import br.com.json.formatter.model.Order;
 
 import java.time.LocalDate;
-import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class CreateOrderService {
 
@@ -15,12 +15,11 @@ public class CreateOrderService {
     }
 
     private Order existingOrder(int id, Set<Order> orders) {
-        Iterator<Order> ordersAsIterator = orders.iterator();
-        while (ordersAsIterator.hasNext()){
-            Order orderNext = ordersAsIterator.next();
-            if(orderNext.getId() == id) return orderNext;
-        }
-        return null;
+        AtomicReference<Order> existOrder = new AtomicReference<>();
+        orders.iterator().forEachRemaining(order ->{
+            if(order.getId() == id) existOrder.set(order);
+        });
+        return existOrder.get();
     }
 
     private Order createNewOrder(int id, LocalDate date) {

@@ -19,16 +19,13 @@ public class CreateObjectsService {
         ExtractDataService extractService = new ExtractDataService();
         Set<User> users = new HashSet<>();
         Set<Order> orders = new HashSet<>();
-        Set<Product> products = new HashSet<>();
         for (var line : lines) {
             var createdUser = createUser(extractService.extractUserId(line), extractService.extractName(line), users);
             users.add(createdUser);
             var createdOrder = createOrder(extractService.extractOrderId(line), extractService.extractOrderDate(line), orders);
             orders.add(createdOrder);
-            var createdProduct = createProduct(extractService.extractProductId(line), extractService.extractProductValue(line), products);
-            products.add(createdProduct);
             createdUser.addingOrdersInlist(createdOrder);
-            createdOrder.addingProductsInlist(createdProduct);
+            createdOrder.addingProductsInlist(createProduct(extractService.extractProductId(line), extractService.extractProductValue(line)));
         }
         return users;
     }
@@ -43,9 +40,9 @@ public class CreateObjectsService {
         return createOrderService.createOrder(id, date, orders);
     }
 
-    private Product createProduct(int id, double value, Set<Product> products){
+    private Product createProduct(int id, double value){
         CreateProductService createProductService = new CreateProductService();
-        return createProductService.createProduct(id, value, products);
+        return createProductService.createProduct(id, value);
     }
 
 

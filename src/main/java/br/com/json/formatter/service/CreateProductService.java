@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class CreateProductService {
 
-    public Product createProduct(int id, double value, Set<Product> products){
+    public Product createProduct(int id, double value){
         return createNewProduct(id, value);
     }
 

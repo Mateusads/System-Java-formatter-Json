@@ -1,6 +1,5 @@
 package br.com.json.formatter.service;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
 
 import static br.com.json.formatter.service.enums.IndexConverter.*;

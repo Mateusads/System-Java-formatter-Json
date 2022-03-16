@@ -1,8 +1,10 @@
 package br.com.json.formatter.service;
 
+import br.com.json.formatter.model.Order;
 import br.com.json.formatter.model.User;
 
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class CreateUserService {
 
@@ -13,10 +15,11 @@ public class CreateUserService {
     }
 
     private User existingUser(int id, Set<User> users) {
-        for(var user : users){
-            if(user.getId() == id) return user;
-        }
-        return null;
+        AtomicReference<User> existentUser = new AtomicReference<>();
+        users.iterator().forEachRemaining(user ->{
+            if(user.getId() == id) existentUser.set(user);
+        });
+        return existentUser.get();
     }
 
     private User createNewUser(int id, String name){
