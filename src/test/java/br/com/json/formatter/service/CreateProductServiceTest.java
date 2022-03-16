@@ -1,7 +1,6 @@
 package br.com.json.formatter.service;
 
 import br.com.json.formatter.model.Product;
-import br.com.json.formatter.model.User;
 import org.junit.Test;
 
 import java.util.*;
@@ -44,8 +43,12 @@ public class CreateProductServiceTest{
         }
 
         assertThat(4).isEqualTo(productList.get(0).getId());
+        assertThat(1881.54).isEqualTo(productList.get(0).getValue());
+        assertThat(4).isEqualTo(productList.get(1).getId());
         assertThat(1881.54).isEqualTo(productList.get(1).getValue());
         assertThat(0).isEqualTo(productList.get(2).getId());
-        assertThat(1417.25).isEqualTo(productList.get(3).getValue());
+        assertThat(1417.25).isEqualTo(productList.get(2).getValue());
+        assertThat(0).isEqualTo(productList.get(3).getId());
+        assertThat(100.025).isEqualTo(productList.get(3).getValue());
     }
 }

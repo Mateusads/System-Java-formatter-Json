@@ -11,11 +11,13 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Builder
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = {"id"})
 public class User {
 
     private int id;
+
     private String name;
+
     private List<Order> orders;
 
     public void addingOrdersInlist(Order newOrder){

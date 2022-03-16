@@ -7,16 +7,14 @@ import java.util.Set;
 public class CreateUserService {
 
     public User createUser(int id, String name, Set<User> users){
-        var newUser = existingUser(id, users);
-        if(newUser == null) newUser = createNewUser(id, name);
+        var newUser = createNewUser(id, name);
+        if(users.contains(newUser)) return existingUser(id, users);
         return newUser;
     }
 
     private User existingUser(int id, Set<User> users) {
-        if(users != null){
-            for(var user : users){
-                if(user.getId() == id) return user;
-            }
+        for(var user : users){
+            if(user.getId() == id) return user;
         }
         return null;
     }

@@ -1,7 +1,6 @@
 package br.com.json.formatter.service;
 
 import br.com.json.formatter.model.Order;
-import br.com.json.formatter.model.User;
 import junit.framework.TestCase;
 import org.junit.Test;
 

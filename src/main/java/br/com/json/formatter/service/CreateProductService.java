@@ -7,18 +7,7 @@ import java.util.Set;
 public class CreateProductService {
 
     public Product createProduct(int id, double value, Set<Product> products){
-        var newProduct = existingProduct(id, products);
-        if(newProduct == null) newProduct = createNewProduct(id, value);
-        return newProduct;
-    }
-
-    private Product existingProduct(int id, Set<Product> products) {
-        if(products != null) {
-            for (var product : products) {
-                if (product.getId() == id) return product;
-            }
-        }
-        return null;
+        return createNewProduct(id, value);
     }
 
     private Product createNewProduct(int id, double value) {

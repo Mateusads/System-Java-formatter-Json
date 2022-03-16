@@ -12,9 +12,9 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Builder
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of = {"id"})
 public class Order {
-    @EqualsAndHashCode.Include
+
     private int id;
     private double total;
     private LocalDate date;

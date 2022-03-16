@@ -3,21 +3,22 @@ package br.com.json.formatter.service;
 import br.com.json.formatter.model.Order;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.Set;
 
 public class CreateOrderService {
 
     public Order createOrder(int id, LocalDate date, Set<Order> orders) {
-        var newOrder = existOrder(id, orders);
-        if (newOrder == null) newOrder = createNewOrder(id, date);
+        var newOrder = createNewOrder(id, date);
+        if(orders.contains(newOrder)) return existingOrder(id, orders);
         return newOrder;
     }
 
-    private Order existOrder(int id, Set<Order> orders) {
-        if(orders != null) {
-            for(var order : orders){
-                if(order.getId() == id) return order;
-            }
+    private Order existingOrder(int id, Set<Order> orders) {
+        Iterator<Order> ordersAsIterator = orders.iterator();
+        while (ordersAsIterator.hasNext()){
+            Order orderNext = ordersAsIterator.next();
+            if(orderNext.getId() == id) return orderNext;
         }
         return null;
     }
