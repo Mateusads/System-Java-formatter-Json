@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-# System-Java-formatter-Json
-Criacação de um sistema onde recebe arquivo.txt
->>>>>>> 7072af4d988bbd41fc561adea7fd03be0c5a949a
-
-
 <h1 align="center">  System-Java-formatter-Json </h1>
 <h3 align="center"> Criacação de um sistema onde recebe arquivo.txt e retorna os dados em formato Json.</h3>
 
@@ -46,3 +39,4 @@ que não tenha problema na integração.
 ##CD 
 Usando o Github Actions feito um script yml para fazer o deploy para o servidor, antes rodando os testes e 
 tasks para garantir que tudo está correto.
+
