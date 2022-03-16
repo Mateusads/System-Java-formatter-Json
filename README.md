@@ -1,6 +1,5 @@
 # System-Java-formatter-Json
 Criacação de um sistema onde recebe arquivo.txt
-O programa foi desenvolvido para fim de teste.
 
 Recebe um args[] (parâmetro) que é o path do arquivo exemplo: ./src/main/resources/fileData.txt
 Esse arquivo deve seguir um padrão de seus campos, e o restorno será um Jsonm associando usuario a várias ordens e as Order a vários Produtos.
