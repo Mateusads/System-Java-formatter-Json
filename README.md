@@ -11,9 +11,8 @@
 O programa consistem em receber um Arquivo 'txt' por args[] (parâmetro), recebendo o caminho (path do arquivo)
 
 Exemplo: "./src/main/resources/fileData.txt"
+Esse arquivo deve seguir um padrão de seus campos, e o retorno será um Json associando a um usuário para várias ordens e uma ordem para vários produtos.
 
-
-Esse arquivo deve seguir um padrão de seus campos, e o restorno será um Json associando usuario a várias ordens e as Order a vários Produtos.
 O padrão do arquivo é divido no tamanho máximo de cada tabela 
 
 ```
