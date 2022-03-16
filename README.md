@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# System-Java-formatter-Json
+Criacação de um sistema onde recebe arquivo.txt
+>>>>>>> 7072af4d988bbd41fc561adea7fd03be0c5a949a
 
 
 <h1 align="center">  System-Java-formatter-Json </h1>
