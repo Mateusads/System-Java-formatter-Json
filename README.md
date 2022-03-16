@@ -35,7 +35,7 @@ Os id's que não tiverem todos os campos são preenchidos com 0 a esquerda e os 
 Feito teste de Unidade com Junit para ao fazer o a Integração Continua onde ao rodar a pipeline no GitHub todos os testes devem passar para 
 que não tenha problema na integração.
 
-##CD 
+## CD 
 Usando o Github Actions feito um script yml para fazer o deploy para o servidor, antes rodando os testes e 
 tasks para garantir que tudo está correto.
 
