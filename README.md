@@ -46,4 +46,3 @@ que não tenha problema na integração.
 ##CD 
 Usando o Github Actions feito um script yml para fazer o deploy para o servidor, antes rodando os testes e 
 tasks para garantir que tudo está correto.
-
